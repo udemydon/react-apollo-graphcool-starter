@@ -8,7 +8,7 @@ const _Environments = {
     },
     dev:
     {
-        'GCOOL_ENDPOINT': 'https://api.graph.cool/simple/v1/cizul957uahti0154chtcxskx'
+        'GCOOL_ENDPOINT': 'https://api.graph.cool/simple/v1/cj6pfr1my0md00177a4gi1m5s'
     }
 
 }

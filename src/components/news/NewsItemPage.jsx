@@ -4,9 +4,9 @@ import { graphql } from 'react-apollo'
 import gql from 'graphql-tag'
 import { filter } from 'graphql-anywhere'
 
-import EditPost from './EditPost.jsx';
+import EditNewsItem from './EditNewsItem.jsx';
 
-class PostPage extends React.Component {
+class NewsItemPage extends React.Component {
 
 
   render () {
@@ -19,12 +19,12 @@ class PostPage extends React.Component {
       return (<div>An unexpected error occurred</div>)
     }
 
-    const post = this.props.data.Post
+    const newsItem = this.props.data.NewsItem;
 
     return (
       <div>
-        <EditPost
-          post={post}
+        <EditNewsItem
+          newsItem={newsItem}
           handleCancel={this.goBack}
           afterChange={this.goBack} />
       </div>
@@ -36,8 +36,8 @@ class PostPage extends React.Component {
   }
 }
 
-const PostQuery = gql`query PostQuery($id: ID!) {
-    Post(id: $id) {
+const NewsItemQuery = gql`query NewsItemQuery($id: ID!) {
+    NewsItem(id: $id) {
       id
       title
       content
@@ -46,13 +46,13 @@ const PostQuery = gql`query PostQuery($id: ID!) {
   }
 `
 
-const PostPageWithData = graphql(PostQuery, {
+const NewsItemPageWithData = graphql(NewsItemQuery, {
     options: (ownProps) => ({
       variables: {
-        id: ownProps.params.postId
+        id: ownProps.params.newsItemId
       }
     })
   }
-)(withRouter(PostPage))
+)(withRouter(NewsItemPage))
 
-export default PostPageWithData
+export default NewsItemPageWithData

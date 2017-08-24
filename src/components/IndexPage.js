@@ -20,7 +20,7 @@ class IndexPage extends React.Component {
             return (<div>An unexpected error occurred</div>)
         }
         //console.log(this.props.data)
-        const rows = this.props.data.allPosts;
+        const rows = this.props.data.allNewsItems;
         return (
             <div className='container'>
                 <Table
@@ -34,7 +34,7 @@ class IndexPage extends React.Component {
                         cell={({rowIndex, ...props}) => (
                             <Cell {...props}>
                                 <Link
-                                    to={`/post/${rows[rowIndex]['id']}`}
+                                    to={`/newsItem/${rows[rowIndex]['id']}`}
                                 >
                                     <div>{rows[rowIndex]['title']}</div>
                                 </Link>
@@ -47,7 +47,7 @@ class IndexPage extends React.Component {
                         cell={({rowIndex, ...props}) => (
                             <Cell {...props}>
                                 <Link
-                                    to={`/post/${rows[rowIndex]['id']}`}
+                                    to={`/newsItem/${rows[rowIndex]['id']}`}
                                 >
                                     <div>{formatDate(rows[rowIndex]['createdAt'], 'MMMM Do YYYY, h:mm:ss a')}</div>
                                 </Link>
@@ -60,7 +60,7 @@ class IndexPage extends React.Component {
                         cell={({rowIndex, ...props}) => (
                             <Cell {...props}>
                                 <Link
-                                    to={`/post/${rows[rowIndex]['id']}`}
+                                    to={`/newsItem/${rows[rowIndex]['id']}`}
                                 >
                                     <div>{formatDate(rows[rowIndex]['updatedAt'], 'MMMM Do YYYY, h:mm:ss a')}</div>
                                 </Link>
@@ -78,13 +78,13 @@ IndexPage.propTypes = {
     data: React.PropTypes.shape({
         loading: React.PropTypes.bool,
         error: React.PropTypes.object,
-        posts: React.PropTypes.object,
+        newsItems: React.PropTypes.object,
     }).isRequired,
 }
 
-const PostsQuery = gql`
-  query Posts {
-    allPosts(orderBy: createdAt_DESC){
+const NewsItemsQuery = gql`
+  query NewsItems {
+    allNewsItems(orderBy: createdAt_DESC){
       id
       title
       createdAt
@@ -93,7 +93,7 @@ const PostsQuery = gql`
   }
 `
 
-const IndexPageWithData = graphql(PostsQuery, {
+const IndexPageWithData = graphql(NewsItemsQuery, {
     options: (ownProps) => {
         return {
             fetchPolicy: "network-only"
