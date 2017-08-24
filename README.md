@@ -1,7 +1,7 @@
 # react-apollo-graphcool-starter
 Starter package that combines React, Apollo, GraphCool
 
-1. Clone the repository on your local machine: git clone https://github.com/gopidon/react-apollo-graphcool-starter.git
+1. Clone the repository on your local machine: git clone https://github.com/udemydon/react-apollo-graphcool-starter.git
 2. Change to the cloned directory. 
 3. From the clone directory, issue the command : sudo npm install 
 4. Next, issue the command: npm start -s
